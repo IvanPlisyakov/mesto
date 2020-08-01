@@ -1,0 +1,22 @@
+.cover-form_margin {
+  top: 195px;
+  padding: 34px 0 37px 0;
+}
+
+@media screen and (max-width: 530px){
+  .cover-form_margin  {
+    left: calc((100% - 260px)/2);
+  }
+}
+
+@media screen and (max-width: 882px) and (min-width: 530px){
+  .cover-form_margin  {
+    left: calc((100% - 51%)/2);
+  }
+}
+
+@media screen and (min-width: 882px) {
+  .cover-form_margin {
+    left: calc((100% - 430px)/2);
+  } 
+}

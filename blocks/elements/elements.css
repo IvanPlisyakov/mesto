@@ -1,0 +1,18 @@
+@import url(./_margin/elements_margin.css);
+
+.elements {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 882px){
+  .elements  {
+    width: 282px;
+  }
+}
+
+@media screen and (min-width: 882px) {
+  .elements  {
+    width: 882px;
+  } 
+}

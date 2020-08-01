@@ -1,0 +1,23 @@
+.profile-form__user {
+  color: black;
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 0 auto 13px auto;
+  width: calc(100% - 4px);
+  height: 50px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.profile-form__user:focus {
+  outline: none;
+  border: 2px solid rgba(18,47,170,0.5);
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+

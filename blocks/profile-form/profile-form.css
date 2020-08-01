@@ -1,0 +1,25 @@
+@import url(./__btn-close/profile-form__btn-close.css);
+@import url(./__btn-save/profile-form__btn-save.css);
+@import url(./__title/profile-form__title.css);
+@import url(./__user/profile-form__user.css);
+@import url(./__user/_data/profile-form__user_data_info.css);
+@import url(./__user/_data/profile-form__user_data_name.css);
+@import url(./_margin/profile-form_margin.css);
+
+@media screen and (max-width: 530px){
+  .profile-form  {
+    width: 220px;
+  }
+}
+
+@media screen and (max-width: 882px) and (min-width: 530px){
+  .profile-form  {
+    width: 83%;
+  }
+}
+
+@media screen and (min-width: 882px) {
+  .profile-form {
+     width: 358px;
+  } 
+}

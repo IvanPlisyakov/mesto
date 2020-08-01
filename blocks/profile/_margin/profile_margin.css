@@ -1,0 +1,11 @@
+@media screen and (max-width: 882px){
+  .profile_margin {
+    margin: 42px auto 36px auto;
+  }
+}
+
+@media screen and (min-width: 882px) {
+  .profile_margin {
+    margin: 40px auto 51px auto;
+  } 
+}
