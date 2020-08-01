@@ -13,26 +13,30 @@ function openProfileForm() { //функция отвечает за создан
   <div class="cover-form cover-form_margin">
     <form class="profile-form profile-form_margin">
       <h2 class="profile-form__title">Редактировать профиль</h2>
-      <input class="profile-form__user profile-form__user_data_name" type="text" value="Жак-Ив Кусто">
-      <input class="profile-form__user profile-form__user_data_info" type="text" value="Исследователь океана">
+      <input class="profile-form__user profile-form__user_data_name" type="text">
+      <input class="profile-form__user profile-form__user_data_info" type="text">
       <input class="profile-form__btn-save" type="button" value="Сохранить">
       <input class="profile-form__btn-close" type="button">
     </form>
   </div>
 `; //при нажатии на edit-button добовляем разметку форму в нужный нам сектор с классом form
+  let nameInput = form.querySelector(".profile-form__user_data_name"); //связываем поля формы с соотв. переменными
+  let infoInput = form.querySelector(".profile-form__user_data_info");
+ 
+  let userName = profile.querySelector(".profile__user-name");  //связываем данные профиля с переменными
+  let userInfo = profile.querySelector(".profile__user-info");
+
+  nameInput.value = userName.textContent; //в форме будет показывать то значение, которые было у профиля
+  infoInput.value = userInfo.textContent;
+
   let btnClose = form.querySelector(".profile-form__btn-close");//кнопка закрытия формы
   btnClose.addEventListener('click', closeProfileForm);//при клике вызываем удаление формы
 
   function formSubmitHandler (evt){
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    let nameInput = form.querySelector(".profile-form__user_data_name"); //связываем поля формы с соотв. переменными
-    let infoInput = form.querySelector(".profile-form__user_data_info");
 
     let newName = nameInput.value; //забираем значение с полей 
     let newInfo = infoInput.value;
-
-    let userName = profile.querySelector(".profile__user-name");  //связываем данные профиля с переменными
-    let userInfo = profile.querySelector(".profile__user-info");
 
     userName.textContent = newName; //присваиваем значение полей к профилю нашей страницы
     userInfo.textContent = newInfo;
