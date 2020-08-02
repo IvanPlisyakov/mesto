@@ -1,18 +1,24 @@
-@import url(./_margin/elements_margin.css);
-
 .elements {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
+  row-gap: 20px;
 }
 
-@media screen and (max-width: 882px){
+@media screen and (max-width: 900px){
   .elements  {
-    width: 282px;
+    max-width: 282px;
+    margin-top: 36px;
+    margin-bottom: 48px;
   }
 }
 
-@media screen and (min-width: 882px) {
+@media screen and (min-width: 900px) {
   .elements  {
-    width: 882px;
+    max-width: 882px;
+    margin-top: 51px;
+    margin-bottom: 66px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 18px;
   } 
 }

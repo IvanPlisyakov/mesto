@@ -1,24 +1,24 @@
-@import url(./_margin/footer_margin.css);
+@import url(./__copyright/footer__copyright.css);
 
 .footer {
-  color: #545454;
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-@media screen and (max-width: 882px){
+@media screen and (max-width: 900px){
   .footer  {
     font-size: 14px;
     line-height: 17px;
     max-width: 282px;
+    margin-top: 48px;
   }
 }
 
-@media screen and (min-width: 882px) {
+@media screen and (min-width: 900px) {
   .footer  {
     font-size: 18px;
     line-height: 22px;
     max-width: 882px;
+    margin-top: 66px;
   } 
 }

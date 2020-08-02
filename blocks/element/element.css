@@ -2,7 +2,6 @@
 @import url(./__column/element__column.css);
 @import url(./__image/element__image.css);
 @import url(./__title/element__title.css);
-@import url(./_margin/element_margin.css);
 
 .element {
   background-color: white;

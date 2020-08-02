@@ -2,15 +2,16 @@
   display: grid;
 }
 
-@media screen and (max-width: 882px){
+@media screen and (max-width: 900px){
   .profile__info {
     margin-bottom: 36px;
-    grid-template-columns: 1fr 49px;
+    grid-template-columns: 1fr minmax(min-content, max-content) 1fr;
+    column-gap: 5px;
     row-gap: 14px;
   }
 }
 
-@media screen and (min-width: 882px) {
+@media screen and (min-width: 900px) {
   .profile__info {
     grid-template-columns: 1fr 24px;
     column-gap: 17px;

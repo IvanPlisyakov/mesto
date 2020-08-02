@@ -5,7 +5,6 @@
 @import url(./__info/profile__info.css);
 @import url(./__user-info/profile__user-info.css);
 @import url(./__user-name/profile__user-name.css);
-@import url(./_margin/profile_margin.css);
 
 .profile {
   display: flex;
@@ -13,17 +12,18 @@
   align-items: center;
 }
 
-@media screen and (max-width: 882px){
+@media screen and (max-width: 900px){
   .profile  {
-    width: 282px;
+    max-width: 282px;
     flex-direction: column;
-    
+    margin-bottom: 36px;
   }
 }
 
-@media screen and (min-width: 882px) {
+@media screen and (min-width: 900px) {
   .profile  {
-    width: 882px;
+    max-width: 882px;
     flex-direction: row;
+    margin-bottom: 51px;
   } 
 }

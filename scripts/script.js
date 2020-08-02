@@ -1,51 +1,36 @@
-let page = document.querySelector(".page");
-let profile = page.querySelector(".profile");
-let editButton = profile.querySelector(".profile__edit-button");
-let form = page.querySelector(".form");
+let form = document.querySelector(".form"); //форма
+let editButton = document.querySelector(".profile__edit-button"); //создать форму
+let btnSave = form.querySelector(".profile-form__btn-save"); //сохранить форму
+let btnClose = form.querySelector(".profile-form__btn-close");  //закрыть форму
 
-function closeProfileForm() { //удаляем форму
-  form.innerHTML = ``;
+let inputName = form.querySelector(".profile-form__user_data_name"); //связываем поля формы с соотв. переменными
+let inputInfo = form.querySelector(".profile-form__user_data_info");
+
+let userName = document.querySelector(".profile__user-name");  //связываем данные профиля с переменными
+let userInfo = document.querySelector(".profile__user-info");
+
+function createForm() {
+  inputName.value = userName.textContent; //в форме будет показывать то значение, которые было в профиле
+  inputInfo.value = userInfo.textContent;
+
+  form.classList.remove("form");  //создаём форму
 }
 
-function openProfileForm() { //функция отвечает за создание формы и всё, что с ней связано
-  form.innerHTML = `
-  <div class="overlay-form"></div>
-  <div class="cover-form cover-form_margin">
-    <form class="profile-form profile-form_margin">
-      <h2 class="profile-form__title">Редактировать профиль</h2>
-      <input class="profile-form__user profile-form__user_data_name" type="text">
-      <input class="profile-form__user profile-form__user_data_info" type="text">
-      <input class="profile-form__btn-save" type="button" value="Сохранить">
-      <input class="profile-form__btn-close" type="button">
-    </form>
-  </div>
-`; //при нажатии на edit-button добовляем разметку форму в нужный нам сектор с классом form
-  let nameInput = form.querySelector(".profile-form__user_data_name"); //связываем поля формы с соотв. переменными
-  let infoInput = form.querySelector(".profile-form__user_data_info");
+editButton.addEventListener('click', createForm);
+
+function closeForm() {
+  form.classList.add("form");  //удаляем форму
+}
+
+form.addEventListener('reset', closeForm);
+
+function saveForm(event) {
+  event.preventDefault(); //Эта строчка отменяет стандартную отправку формы.
+
+  userName.textContent = inputName.value;  //записываем значение полей в профиль
+  userInfo.textContent = inputInfo.value;
  
-  let userName = profile.querySelector(".profile__user-name");  //связываем данные профиля с переменными
-  let userInfo = profile.querySelector(".profile__user-info");
-
-  nameInput.value = userName.textContent; //в форме будет показывать то значение, которые было у профиля
-  infoInput.value = userInfo.textContent;
-
-  let btnClose = form.querySelector(".profile-form__btn-close");//кнопка закрытия формы
-  btnClose.addEventListener('click', closeProfileForm);//при клике вызываем удаление формы
-
-  function formSubmitHandler (evt){
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-
-    let newName = nameInput.value; //забираем значение с полей 
-    let newInfo = infoInput.value;
-
-    userName.textContent = newName; //присваиваем значение полей к профилю нашей страницы
-    userInfo.textContent = newInfo;
-  }
-
-  let btnSave = form.querySelector(".profile-form__btn-save"); //кнопка "Сохранить"
-
-  btnSave.addEventListener('click', formSubmitHandler);  //при нажатии вызываем функцию отвечающую за форму
-  btnSave.addEventListener('click', closeProfileForm);  //закрываем форму
+  closeForm();  //закрытие формы
 }
 
-editButton.addEventListener('click', openProfileForm);  //открываем форму
+form.addEventListener('submit', saveForm);

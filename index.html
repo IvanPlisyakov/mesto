@@ -9,72 +9,81 @@
   <meta name="keywords" content="html, css, js" />
   <meta name="author" content="Иван Плисяков" />
 </head>
-<body>
-  <div class="page page_margin">
+<body class="body">
+  <div class="page">
     <header class="header header_margin">
       <img class="header__logo" src="images/header-logo.svg" alt="Логотип Mesto Russia">
-      <div class="header__line"></div>
     </header>
-    <main>
-      <section class="profile profile_margin">
+    <main class="main">
+      <section class="profile">
         <img class="profile__avatar" src="images/profile__avatar.png" alt="Аватар вашей страницы">
         <div class="profile__column">
           <div class="profile__info">
-            <p class="profile__user-name">Жак-Ив Кусто</p>
-            <button class="profile__edit-button"></button>
+            <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="submit"></button>
             <p class="profile__user-info">Исследователь океана</p>
           </div>
-        <button class="profile__add-button"></button>
+        <button class="profile__add-button" type="submit"></button>
         </div>
       </section>
       <section class="form">
+        <div class="overlay-form"></div>
+        <div class="cover-form">
+          <form class="profile-form profile-form_margin">
+            <h2 class="profile-form__title">Редактировать профиль</h2>
+            <input class="profile-form__user profile-form__user_data_name" type="text">
+            <input class="profile-form__user profile-form__user_data_info" type="text">
+            <button class="profile-form__btn-save" type="submit">Сохранить</button>
+            <button class="profile-form__btn-close" type="reset"></button>
+          </form>
+        </div>
       </section>
-      <section class="elements elemets_margin">
-        <div class="element element_margin"><!--1-->
+      <section class="elements">
+        <div class="element"><!--1-->
           <img class="element__image" src="images/element-old_blood.jpg" alt="Обложка альбома OLD BLOOD">
           <div class="element__column">
             <h4 class="element__title">OLD BLOOD</h4>
-            <button class="element__btn-like"></button>
+            <button class="element__btn-like" type="submit"></button>
           </div>
         </div>
         <div class="element element_margin"><!--2-->
           <img class="element__image" src="images/element-opg.jpg" alt="Обложка альбома ОПГ СИТИ">
           <div class="element__column">
             <h4 class="element__title">ОПГ СИТИ</h4>
-            <button class="element__btn-like"></button>
+            <button class="element__btn-like" type="submit"></button>
           </div>
         </div>
         <div class="element element_margin"><!--3-->
           <img class="element__image" src="images/element-opiates.jpg" alt="Обложка альбома Опиаты Круг">
           <div class="element__column">
             <h4 class="element__title">Опиаты Круг</h4>
-            <button class="element__btn-like"></button>
+            <button class="element__btn-like" type="submit"></button>
           </div>
         </div>
         <div class="element element_margin"><!--4-->
           <img class="element__image" src="images/element-rulers.jpg" alt="Обложка альбома Властелин Калек">
           <div class="element__column">
             <h4 class="element__title">Властелин Калек</h4>
-            <button class="element__btn-like"></button>
+            <button class="element__btn-like" type="submit"></button>
           </div>
         </div>
         <div class="element element_margin"><!--5-->
           <img class="element__image" src="images/element-the_rule.jpg" alt="Обложка альбома Правило">
           <div class="element__column">
             <h4 class="element__title">Правило</h4>
-            <button class="element__btn-like"></button>
+            <button class="element__btn-like" type="submit"></button>
           </div>
         </div>
         <div class="element element_margin"><!--6-->
           <img class="element__image" src="images/element_no_label.jpg" alt="Обложка альбома NO LABEL">
           <div class="element__column">
             <h4 class="element__title">NO LABEL</h4>
-            <button class="element__btn-like"></button>
+            <button class="element__btn-like" type="submit"></button>
           </div>
         </div>
       </section>
     </main>
-    <footer class="footer footer_margin">&copy; 2020 Mesto Russia</footer>
+    <footer class="footer"><p class="footer__copyright">&copy; 2020 Mesto Russia</p></footer>
   </div>
   <script src="scripts/script.js"></script>
 </body>
