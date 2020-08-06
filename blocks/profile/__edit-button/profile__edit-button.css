@@ -7,9 +7,6 @@
   box-sizing: border-box;
   outline: none;
   align-self: end;
-  background-color: transparent;
-  grid-row-start: 1;
-  grid-row-end: 2;
 }
 
 .profile__edit-button:hover {
@@ -21,10 +18,6 @@
     max-width: 18px;
     height: 18px;
     background-size: 8px;/*не макет*/
-    margin-bottom: 18px;
-    grid-column-start: 3;
-    grid-column-end: 4;
-
   }
 }
 
@@ -34,6 +27,8 @@
     height: 24px;
     grid-column-start: 2;
     grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
     background-size: 10px;
     margin-bottom: 12px;
   } 

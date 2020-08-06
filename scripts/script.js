@@ -1,7 +1,5 @@
 let form = document.querySelector(".form"); //форма
 let editButton = document.querySelector(".profile__edit-button"); //создать форму
-let btnSave = form.querySelector(".profile-form__btn-save"); //сохранить форму
-let btnClose = form.querySelector(".profile-form__btn-close");  //закрыть форму
 
 let inputName = form.querySelector(".profile-form__user_data_name"); //связываем поля формы с соотв. переменными
 let inputInfo = form.querySelector(".profile-form__user_data_info");
@@ -13,13 +11,13 @@ function createForm() {
   inputName.value = userName.textContent; //в форме будет показывать то значение, которые было в профиле
   inputInfo.value = userInfo.textContent;
 
-  form.classList.remove("form");  //создаём форму
+  form.classList.add("form_open");  //создаём форму
 }
 
 editButton.addEventListener('click', createForm);
 
 function closeForm() {
-  form.classList.add("form");  //удаляем форму
+  form.classList.remove("form_open");  //удаляем форму
 }
 
 form.addEventListener('reset', closeForm);

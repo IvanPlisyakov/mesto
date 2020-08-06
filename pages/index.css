@@ -6,8 +6,8 @@
 @import url(../blocks/main/main.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/form/form.css);
+@import url(../blocks/form/_open/form_open.css);
 @import url(../blocks/overlay-form/overlay-form.css);
-@import url(../blocks/cover-form/cover-form.css);
 @import url(../blocks/profile-form/profile-form.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);

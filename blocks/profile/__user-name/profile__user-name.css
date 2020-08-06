@@ -1,14 +1,12 @@
 .profile__user-name {
   color: white;
-  font-family: Inter;
+  font-family: Inter, Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
   margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  grid-row-start: 1;
-  grid-row-end: 2;
 }
 
 @media screen and (max-width: 900px){
@@ -19,8 +17,6 @@
     justify-self: end;
     text-align: center;
     max-width: 220px;
-    grid-column-start: 2;
-    grid-column-end: 3;
   }
 }
 
@@ -29,7 +25,5 @@
     font-size: 42px;
     line-height: 56px;
     max-width: 530px;
-    grid-column-start: 1;
-    grid-column-end: 2;
   } 
 }
