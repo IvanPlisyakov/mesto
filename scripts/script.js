@@ -14,13 +14,9 @@ function createForm() {
   form.classList.add("form_open");  //создаём форму
 }
 
-editButton.addEventListener('click', createForm);
-
 function closeForm() {
   form.classList.remove("form_open");  //удаляем форму
 }
-
-form.addEventListener('reset', closeForm);
 
 function saveForm(event) {
   event.preventDefault(); //Эта строчка отменяет стандартную отправку формы.
@@ -31,4 +27,6 @@ function saveForm(event) {
   closeForm();  //закрытие формы
 }
 
+editButton.addEventListener('click', createForm);
+form.addEventListener('reset', closeForm);
 form.addEventListener('submit', saveForm);
