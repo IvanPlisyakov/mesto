@@ -5,6 +5,7 @@
   height: 18px;
   border: none;
   background-image: url(../../../images/element-btn-like.svg);
+  background-color: white;
   background-repeat: no-repeat;
   object-fit: cover;
   outline: none;

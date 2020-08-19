@@ -1,5 +1,10 @@
 .element__image {
-  max-width: 282px;
-  max-height: 282px;
+  width: 282px;
+  height: 282px;
   border-radius: 10px 10px 0px 0px;
+  /*background-image: url(../../../images/element-the_rule.jpg);*/
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
 }

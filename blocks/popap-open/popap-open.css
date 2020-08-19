@@ -1,0 +1,13 @@
+@keyframes popap-open {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.popap-open {
+  display: block;
+  /*animation: popap-open 1s linear;*/
+}
