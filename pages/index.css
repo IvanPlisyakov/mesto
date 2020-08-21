@@ -11,6 +11,8 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/picture-opening/picture-opening.css);
-@import url(../blocks/picture-opening/_active/picture-opening_active.css);
+/*@import url(../blocks/picture-opening/_active/picture-opening_active.css);*/
 @import url(../blocks/footer/footer.css);
+@import url(../blocks/popap-active/popap-active.css);
 @import url(../blocks/popap-open/popap-open.css);
+@import url(../blocks/popan-close/popap-close.css);

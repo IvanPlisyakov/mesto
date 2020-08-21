@@ -8,6 +8,5 @@
 }
 
 .popap-open {
-  display: block;
-  /*animation: popap-open 1s linear;*/
+  animation: popap-open 1s linear forwards;
 }

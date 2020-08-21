@@ -1,11 +1,11 @@
-@keyframes popap-close {
+/*@keyframes popap-close {
   from {
       opacity: 1;
   }
   to {
       opacity: 0;
   }
-}
+}*/
 
 .form {
   position: fixed;
@@ -18,6 +18,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
+  /*visibility: hidden;*/
   display: none;
   /*opacity: 0;*/
 }

@@ -1,12 +1,14 @@
 @keyframes popap-close {
   from {
       opacity: 1;
+
   }
   to {
       opacity: 0;
+
   }
 }
 
-/*.popap-close {
-  animation: popap-close 1s linear;
-}*/
+.popap-close {
+  animation: popap-close 1s linear forwards;
+}
