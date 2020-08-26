@@ -26,15 +26,24 @@
         <button class="profile__add-button" type="button"></button>
         </div>
       </section>
-      <section class="form">
+      <section class="form form_edit-button">
         <form class="profile-form" name="profile-сhange">
-          <h2 class="profile-form__title"></h2>
+          <h2 class="profile-form__title">Редактировать профиль</h2>
           <input class="profile-form__user profile-form__user_data_name" type="text" name="profile-сhange">
           <input class="profile-form__user profile-form__user_data_info" type="text" name="profile-сhange">
           <button class="profile-form__btn-save" type="submit">Сохранить</button>
           <button class="profile-form__btn-close" type="reset"></button>
         </form>
-    </section>
+      </section>
+      <section class="form form_add-button">
+        <form class="profile-form" name="adding-a-picture">
+          <h2 class="profile-form__title">Новое место</h2>
+          <input class="profile-form__user profile-form__user_data_name" type="text" name="adding-a-picture" placeholder="Название">
+          <input class="profile-form__user profile-form__user_data_info" type="text" name="adding-a-picture" placeholder="Ссылка на картинку">
+          <button class="profile-form__btn-save" type="submit">Сохранить</button>
+          <button class="profile-form__btn-close" type="reset"></button>
+        </form>
+      </section>
       <template id="card">
         <div class="element">
           <img class="element__image" src="" alt="">

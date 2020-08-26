@@ -10,5 +10,6 @@
 }
 
 .popap-close {
+  display: none;
   animation: popap-close 1s linear forwards;
 }
