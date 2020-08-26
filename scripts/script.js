@@ -54,7 +54,7 @@ const btnClose = pictureOpening.querySelector('.profile-form__btn-close')
 
 //функции
 
-function smoothCloseOpenPopup(blockName){  /* хоть где-то popup правильно написал... */
+function togglePopup(blockName){  /* хоть где-то popup правильно написал... */
   blockName.classList.toggle("popap-active");
 }
 
@@ -69,7 +69,7 @@ function createElement(elementTitle, elementImg) {//чтобы создать к
     pictureOpening.querySelector('.picture-opening__title').textContent = elementTitle; // имя картинки
     pictureOpening.querySelector('.picture-opening__img').setAttribute('src', elementImg);  //вставляем картинку
 
-    smoothCloseOpenPopup(pictureOpening);
+    togglePopup(pictureOpening);
   });
 
   elementCopy.querySelector('.element__btn-like').addEventListener('click', function (evt) { /*inst: vanishhhhhhhhh проверьте, пожалуйста, работают ли там лайки тоже*/
@@ -84,13 +84,13 @@ function createElement(elementTitle, elementImg) {//чтобы создать к
 };
 
 btnClose.addEventListener('click', function () {  //закрытие картинки
-  smoothCloseOpenPopup(pictureOpening);
+  togglePopup(pictureOpening);
 });
 
 // функции отвечающие за попапы
 
 function openingEditForm(){
-  smoothCloseOpenPopup(formEditButton);
+  togglePopup(formEditButton);
 
   inputName.value = userName.textContent; //в форме будет показывать то значение, которые было в профиле
   inputInfo.value = userInfo.textContent;
@@ -101,18 +101,18 @@ function saveEditForm(event){
   userName.textContent = inputName.value;  //записываем значение полей в профиль
   userInfo.textContent = inputInfo.value;
 
-  smoothCloseOpenPopup(formEditButton);
+  togglePopup(formEditButton);
 }
 
 function openingAddForm(){
-  smoothCloseOpenPopup(formAddButton);
+  togglePopup(formAddButton);
 }
 
 function saveAddForm(event){
   event.preventDefault(); //Эта строчка отменяет стандартную отправку формы.
   createElement(inputTitle.value, inputLink.value); //создаём картинку
 
-  smoothCloseOpenPopup(formAddButton);
+  togglePopup(formAddButton);
 
   inputTitle.value = ""; //обнуляем ввёденное значение
   inputLink.value = "";
@@ -121,11 +121,11 @@ function saveAddForm(event){
 //кнопки
 
 editButton.addEventListener('click', openingEditForm);  //edit
-formEditButton.addEventListener('reset', () => smoothCloseOpenPopup(formEditButton));
+formEditButton.addEventListener('reset', () => togglePopup(formEditButton));
 formEditButton.addEventListener('submit', saveEditForm);
 
 addButton.addEventListener('click', openingAddForm);  //add
-formAddButton.addEventListener('reset', () => smoothCloseOpenPopup(formAddButton));
+formAddButton.addEventListener('reset', () => togglePopup(formAddButton));
 formAddButton.addEventListener('submit', saveAddForm);
 
 //код
