@@ -59,7 +59,12 @@ function togglePopup(blockName){  /* хоть где-то popup правильн
 }
 
 function createElement(elementTitle, elementImg) {//чтобы создать карточку нам нужны её title и её image link
-  const elementCopy = cardTemplate.cloneNode(true);// клонируем содержимое тега template
+  // отображаем на странице
+  addElement(initializationElement(elementTitle, elementImg));
+};
+
+function initializationElement(elementTitle, elementImg){
+  const elementCopy = cardTemplate.cloneNode(true); // клонируем содержимое тега template
   const elementImage = elementCopy.querySelector('.element__image');
 
   elementCopy.querySelector('.element__title').textContent = elementTitle;  // добавление имени
@@ -80,8 +85,12 @@ function createElement(elementTitle, elementImg) {//чтобы создать к
     evt.target.closest(".element").remove();//обращаемся к ближайщему родителю ".element" и удаляем его
   });
 
-  elements.append(elementCopy);// отображаем на странице
-};
+  return elementCopy;
+}
+
+function addElement(elementCopy){ // в качестве аргумента передаём то, что хотим добавить в конец ".elements"
+  elements.append(elementCopy);
+}
 
 btnClose.addEventListener('click', function () {  //закрытие картинки
   togglePopup(pictureOpening);
@@ -133,6 +142,8 @@ formAddButton.addEventListener('submit', saveAddForm);
 for (let i = 0; i < initialCards.length; i++){//создаём 6 карточек 
   createElement(initialCards[i].name, initialCards[i].link);
 }
+
+//dh8dd
 
 
 
