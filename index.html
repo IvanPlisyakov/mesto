@@ -27,19 +27,31 @@
         </div>
       </section>
       <section class="form form_edit-button">
-        <form class="profile-form" name="profile-сhange">
+        <form class="profile-form" name="profile-сhange" novalidate>
           <h2 class="profile-form__title">Редактировать профиль</h2>
-          <input class="profile-form__user profile-form__user_data_name" type="text" name="profile-сhange">
-          <input class="profile-form__user profile-form__user_data_info" type="text" name="profile-сhange">
+          <label class="profile-form__field">
+            <input class="profile-form__user profile-form__user_data_name" id="name-input" type="text" name="profile-сhange" minlength="2" maxlength="40" required>
+            <span class="profile-form__user-error" id="name-input-error">fygiigfygiifygiigfygiifygiigfygiifygiigfygiifygiigfygiifygiigfygiifygiigfygii</span>
+          </label>
+          <label class="profile-form__field">
+            <input class="profile-form__user profile-form__user_data_info" id="info-input" type="text" name="profile-сhange" minlength="2" maxlength="200" required>
+            <span class="profile-form__user-error" id="info-input-error">ты лохf ygiigfygiifygiigf ygiifygiigfyg iifygiigfy giifyg iifygiigfygii fygiigfygiifyg iigfygiifygiig fygiifygii</span>
+          </label>
           <button class="profile-form__btn-save" type="submit">Сохранить</button>
           <button class="profile-form__btn-close" type="reset"></button>
         </form>
       </section>
       <section class="form form_add-button">
-        <form class="profile-form" name="adding-a-picture">
+        <form class="profile-form" name="adding-a-picture" novalidate>
           <h2 class="profile-form__title">Новое место</h2>
-          <input class="profile-form__user profile-form__user_data_name" type="text" name="adding-a-picture" placeholder="Название">
-          <input class="profile-form__user profile-form__user_data_info" type="text" name="adding-a-picture" placeholder="Ссылка на картинку">
+          <label class="profile-form__field">
+            <input class="profile-form__user profile-form__user_data_name" id="title-input" type="text" name="adding-a-picture" placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="profile-form__user-error" id="title-input-error"></span>
+          </label>
+          <label class="profile-form__field">
+            <input class="profile-form__user profile-form__user_data_info" id="link-input" type="url" name="adding-a-picture" placeholder="Ссылка на картинку" required>
+            <span class="profile-form__user-error" id="link-input-error"></span>
+          </label>
           <button class="profile-form__btn-save" type="submit">Сохранить</button>
           <button class="profile-form__btn-close" type="reset"></button>
         </form>
@@ -70,5 +82,6 @@
     <footer class="footer"><p class="footer__copyright">&copy; 2020 Mesto Russia</p></footer>
   </div>
   <script src="scripts/script.js"></script>
+  <script src="scripts/validate.js"></script>
 </body>
 </html>

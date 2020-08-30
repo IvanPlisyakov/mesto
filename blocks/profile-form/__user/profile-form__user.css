@@ -2,9 +2,9 @@
   color: black;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin: 0 auto 13px auto;
-  width: calc(100% - 4px);
-  height: 50px;
+  margin: 28px auto 5px auto;
+  /*width: calc(100% - 4px);*/
+  height: 40px;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;

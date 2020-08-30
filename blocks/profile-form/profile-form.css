@@ -1,9 +1,14 @@
 @import url(./__btn-close/profile-form__btn-close.css);
 @import url(./__btn-save/profile-form__btn-save.css);
+@import url(./__btn-save/_inactive/profile-form__btn-save_inactive.css);
+@import url(./__field/profile-form__field.css);
 @import url(./__title/profile-form__title.css);
 @import url(./__user/profile-form__user.css);
 @import url(./__user/_data/profile-form__user_data_info.css);
 @import url(./__user/_data/profile-form__user_data_name.css);
+@import url(./__user/_type/profile-form__user_type_error.css);
+@import url(./__user-error/profile-form__user-error.css);
+@import url(./__user-error/_active/profile-form__user-error_active.css);
 
 .profile-form {
   margin: 0 auto 0 auto;

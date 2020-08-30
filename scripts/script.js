@@ -1,3 +1,6 @@
+            /*переменные*/
+
+
 //переменные связанные с карточками
 
 const initialCards = [
@@ -50,9 +53,13 @@ const inputLink = formAddButton.querySelector(".profile-form__user_data_info");
 const userName = document.querySelector(".profile__user-name");  //связываем данные профиля с переменными
 const userInfo = document.querySelector(".profile__user-info");
 
-const btnClose = pictureOpening.querySelector('.profile-form__btn-close')
+const btnClose = pictureOpening.querySelector('.profile-form__btn-close');
 
-//функции
+
+
+const buttonSaveList = Array.from(document.querySelectorAll(".profile-form__btn-save"));
+                /*функции*/
+
 
 function togglePopup(blockName){  /* хоть где-то popup правильно написал... */
   blockName.classList.toggle("popap-active");
@@ -98,11 +105,23 @@ btnClose.addEventListener('click', function () {  //закрытие карти�
 
 // функции отвечающие за попапы
 
-function openingEditForm(){
+//edit
+
+function openingEditForm(evt){
   togglePopup(formEditButton);
 
   inputName.value = userName.textContent; //в форме будет показывать то значение, которые было в профиле
   inputInfo.value = userInfo.textContent;
+
+  document.addEventListener('keydown', resetKeyEditForm);
+
+  formEditButton.addEventListener('click', resetClickEditForm);
+}
+
+function resetEditForm(){
+  togglePopup(formEditButton);
+
+  document.removeEventListener('keydown', resetKeyEditForm);
 }
 
 function saveEditForm(event){
@@ -111,10 +130,38 @@ function saveEditForm(event){
   userInfo.textContent = inputInfo.value;
 
   togglePopup(formEditButton);
+
+  document.removeEventListener('keydown', resetKeyEditForm);
 }
+
+function resetKeyEditForm(evt){
+  if(evt.keyCode === 27){
+    togglePopup(formEditButton);
+
+    document.removeEventListener('keydown', resetKeyEditForm);
+  }
+}
+
+function resetClickEditForm(evt){
+  if(evt.target.classList.value.indexOf('profile-form') < 0){
+    togglePopup(formEditButton);
+  }
+};
+
+//add
 
 function openingAddForm(){
   togglePopup(formAddButton);
+
+  document.addEventListener('keydown', resetKeyAddForm);
+
+  formAddButton.addEventListener('click', resetClickAddForm);
+}
+
+function resetAddForm(){
+  togglePopup(formAddButton);
+
+  formEditButton.removeEventListener('keydown', resetKeyAddForm);
 }
 
 function saveAddForm(event){
@@ -125,25 +172,67 @@ function saveAddForm(event){
 
   inputTitle.value = ""; //обнуляем ввёденное значение
   inputLink.value = "";
+
+  document.removeEventListener('keydown', resetKeyAddForm);
 }
 
-//кнопки
+function resetKeyAddForm(evt){
+  if(evt.keyCode === 27){
+    togglePopup(formAddButton);
+
+    document.removeEventListener('keydown', resetKeyAddForm);
+  }
+}
+
+function resetClickAddForm(evt){
+  if(evt.target.classList.value.indexOf('profile-form') < 0){
+    togglePopup(formAddButton);
+  }
+};
+
+            /*кнопки*/
 
 editButton.addEventListener('click', openingEditForm);  //edit
-formEditButton.addEventListener('reset', () => togglePopup(formEditButton));
+formEditButton.addEventListener('reset', resetEditForm);
 formEditButton.addEventListener('submit', saveEditForm);
 
 addButton.addEventListener('click', openingAddForm);  //add
-formAddButton.addEventListener('reset', () => togglePopup(formAddButton));
+formAddButton.addEventListener('reset', resetAddForm);
 formAddButton.addEventListener('submit', saveAddForm);
 
-//код
+/*function exitEscPopup(){
+  const formList = Array.from(formElement.querySelectorAll('.profile-form__user'));
+  formList.forEach((formElement) => {
+    formElement.addEventListener('submit', function (evt) {
+      evt.preventDefault();
+    });
+}*/
+
+/*function exitEscEditPopap(evt){
+  if(evt.keyCode == 27){
+    alert(5);
+  }
+}*/
+
+
+
+//formEditButton.addEventListener('keydown', exitEscEditPopap);
+
+                /*код*/
 
 for (let i = 0; i < initialCards.length; i++){//создаём 6 карточек 
   createElement(initialCards[i].name, initialCards[i].link);
 }
 
-//dh8dd
+//enableValidation();
+
+
+
+
+
+
+
+
 
 
 
