@@ -145,6 +145,8 @@ function resetKeyEditForm(evt){
 function resetClickEditForm(evt){
   if(evt.target.classList.value.indexOf('profile-form') < 0){
     togglePopup(formEditButton);
+
+    document.removeEventListener('keydown', resetKeyEditForm);
   }
 };
 
@@ -187,6 +189,8 @@ function resetKeyAddForm(evt){
 function resetClickAddForm(evt){
   if(evt.target.classList.value.indexOf('profile-form') < 0){
     togglePopup(formAddButton);
+
+    formEditButton.removeEventListener('keydown', resetKeyAddForm);
   }
 };
 
