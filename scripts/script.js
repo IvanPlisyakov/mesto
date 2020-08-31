@@ -55,14 +55,42 @@ const userInfo = document.querySelector(".profile__user-info");
 
 const btnClose = pictureOpening.querySelector('.profile-form__btn-close');
 
-
-
 const buttonSaveList = Array.from(document.querySelectorAll(".profile-form__btn-save"));
                 /*функции*/
 
 
 function togglePopup(blockName){  /* хоть где-то popup правильно написал... */
+  if(!togglePopup.value){
+    togglePopup.value = 0;
+  }
+
+  if(togglePopup.value == 1){
+    togglePopup.value = 0;
+  } else {
+    togglePopup.value = 1;
+  }
+
   blockName.classList.toggle("popap-active");
+
+  if(document.value = 1){
+    switch (blockName) {
+      case formEditButton:
+        document.addEventListener('keydown', resetKeyEditForm);
+        break;
+      case formAddButton:
+        document.addEventListener('keydown', resetKeyAddForm);
+        break;
+    }
+  } else {
+    switch (blockName) {
+      case formEditButton:
+        document.removeEventListener('keydown', resetKeyEditForm);
+        break;
+      case formAddButton:
+        document.removeEventListener('keydown', resetKeyAddForm);
+        break;
+    }
+  }
 }
 
 function createElement(elementTitle, elementImg) {//чтобы создать карточку нам нужны её title и её image link
@@ -113,15 +141,11 @@ function openingEditForm(evt){
   inputName.value = userName.textContent; //в форме будет показывать то значение, которые было в профиле
   inputInfo.value = userInfo.textContent;
 
-  document.addEventListener('keydown', resetKeyEditForm);
-
-  formEditButton.addEventListener('click', resetClickEditForm);
+  formEditButton.addEventListener('click', resetClickEditForm);  //resetClickEditForm
 }
 
 function resetEditForm(){
   togglePopup(formEditButton);
-
-  document.removeEventListener('keydown', resetKeyEditForm);
 }
 
 function saveEditForm(event){
@@ -130,14 +154,11 @@ function saveEditForm(event){
   userInfo.textContent = inputInfo.value;
 
   togglePopup(formEditButton);
-
-  document.removeEventListener('keydown', resetKeyEditForm);
 }
 
 function resetKeyEditForm(evt){
   if(evt.keyCode === 27){
     togglePopup(formEditButton);
-
     document.removeEventListener('keydown', resetKeyEditForm);
   }
 }
@@ -145,8 +166,6 @@ function resetKeyEditForm(evt){
 function resetClickEditForm(evt){
   if(evt.target.classList.value.indexOf('profile-form') < 0){
     togglePopup(formEditButton);
-
-    document.removeEventListener('keydown', resetKeyEditForm);
   }
 };
 
@@ -155,15 +174,11 @@ function resetClickEditForm(evt){
 function openingAddForm(){
   togglePopup(formAddButton);
 
-  document.addEventListener('keydown', resetKeyAddForm);
-
-  formAddButton.addEventListener('click', resetClickAddForm);
+  formAddButton.addEventListener('click', resetClickAddForm);  //resetClickAddForm
 }
 
 function resetAddForm(){
   togglePopup(formAddButton);
-
-  formEditButton.removeEventListener('keydown', resetKeyAddForm);
 }
 
 function saveAddForm(event){
@@ -174,8 +189,6 @@ function saveAddForm(event){
 
   inputTitle.value = ""; //обнуляем ввёденное значение
   inputLink.value = "";
-
-  document.removeEventListener('keydown', resetKeyAddForm);
 }
 
 function resetKeyAddForm(evt){
@@ -189,8 +202,6 @@ function resetKeyAddForm(evt){
 function resetClickAddForm(evt){
   if(evt.target.classList.value.indexOf('profile-form') < 0){
     togglePopup(formAddButton);
-
-    formEditButton.removeEventListener('keydown', resetKeyAddForm);
   }
 };
 
