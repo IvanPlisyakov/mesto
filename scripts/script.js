@@ -56,42 +56,38 @@ const userInfo = document.querySelector(".profile__user-info");
 const btnClose = pictureOpening.querySelector('.profile-form__btn-close');
 
 const buttonSaveList = Array.from(document.querySelectorAll(".profile-form__btn-save"));
+
+let openPopup;
+
                 /*функции*/
 
 
 function togglePopup(blockName){  /* хоть где-то popup правильно написал... */
-  if(!togglePopup.value){
-    togglePopup.value = 0;
-  }
-
-  if(togglePopup.value == 1){
-    togglePopup.value = 0;
-  } else {
-    togglePopup.value = 1;
-  }
-
   blockName.classList.toggle("popap-active");
 
-  if(document.value = 1){
-    switch (blockName) {
-      case formEditButton:
-        document.addEventListener('keydown', resetKeyEditForm);
-        break;
-      case formAddButton:
-        document.addEventListener('keydown', resetKeyAddForm);
-        break;
-    }
+  openPopup = blockName;
+
+  if(blockName.classList.contains("popap-active")) {//смотрим активен ли попап
+    document.addEventListener('keydown', handleEscClose);  //добавляем слушатель
+    document.addEventListener('click', handleClickClose);
   } else {
-    switch (blockName) {
-      case formEditButton:
-        document.removeEventListener('keydown', resetKeyEditForm);
-        break;
-      case formAddButton:
-        document.removeEventListener('keydown', resetKeyAddForm);
-        break;
-    }
+    document.removeEventListener('keydown', handleEscClose); //удаляем
+    document.removeEventListener('click', handleClickClose);
   }
 }
+
+function handleEscClose(evt) {//если нажат Esc, применяем togglePopup(blockName)
+  if(evt.keyCode == 27){
+    togglePopup(openPopup);
+  }
+}
+
+function handleClickClose(evt){
+  if(evt.target.classList.value.startsWith('form') || (evt.target.classList.value.startsWith('picture-opening') && !evt.target.classList.value.startsWith('picture-opening_'))){
+    togglePopup(openPopup);
+  }
+
+};
 
 function createElement(elementTitle, elementImg) {//чтобы создать карточку нам нужны её title и её image link
   // отображаем на странице
@@ -140,8 +136,6 @@ function openingEditForm(evt){
 
   inputName.value = userName.textContent; //в форме будет показывать то значение, которые было в профиле
   inputInfo.value = userInfo.textContent;
-
-  formEditButton.addEventListener('click', resetClickEditForm);  //resetClickEditForm
 }
 
 function resetEditForm(){
@@ -156,25 +150,10 @@ function saveEditForm(event){
   togglePopup(formEditButton);
 }
 
-function resetKeyEditForm(evt){
-  if(evt.keyCode === 27){
-    togglePopup(formEditButton);
-    document.removeEventListener('keydown', resetKeyEditForm);
-  }
-}
-
-function resetClickEditForm(evt){
-  if(evt.target.classList.value.indexOf('profile-form') < 0){
-    togglePopup(formEditButton);
-  }
-};
-
 //add
 
 function openingAddForm(){
   togglePopup(formAddButton);
-
-  formAddButton.addEventListener('click', resetClickAddForm);  //resetClickAddForm
 }
 
 function resetAddForm(){
@@ -191,20 +170,6 @@ function saveAddForm(event){
   inputLink.value = "";
 }
 
-function resetKeyAddForm(evt){
-  if(evt.keyCode === 27){
-    togglePopup(formAddButton);
-
-    document.removeEventListener('keydown', resetKeyAddForm);
-  }
-}
-
-function resetClickAddForm(evt){
-  if(evt.target.classList.value.indexOf('profile-form') < 0){
-    togglePopup(formAddButton);
-  }
-};
-
             /*кнопки*/
 
 editButton.addEventListener('click', openingEditForm);  //edit
@@ -214,22 +179,6 @@ formEditButton.addEventListener('submit', saveEditForm);
 addButton.addEventListener('click', openingAddForm);  //add
 formAddButton.addEventListener('reset', resetAddForm);
 formAddButton.addEventListener('submit', saveAddForm);
-
-/*function exitEscPopup(){
-  const formList = Array.from(formElement.querySelectorAll('.profile-form__user'));
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', function (evt) {
-      evt.preventDefault();
-    });
-}*/
-
-/*function exitEscEditPopap(evt){
-  if(evt.keyCode == 27){
-    alert(5);
-  }
-}*/
-
-
 
 //formEditButton.addEventListener('keydown', exitEscEditPopap);
 
