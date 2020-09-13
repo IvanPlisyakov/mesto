@@ -1,7 +1,5 @@
-            /*переменные*/
-
-
-//переменные связанные с карточками
+import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
 
 const initialCards = [
   {
@@ -30,7 +28,15 @@ const initialCards = [
   }
 ];
 
-const cardTemplate = document.querySelector('#card').content;//template
+const tuningValidation = {
+  form: '.profile-form',
+  inputTypeError: 'profile-form__user_type_error',
+  inputErrorActive: 'profile-form__user-error_active',
+  formInput: '.profile-form__user',
+  formSubmit: '.profile-form__btn-save',
+  buttonInctive: 'profile-form__btn-save_inactive',
+};
+
 const elements = document.querySelector('.elements');//секция для карточек
 
 const pictureOpening = document.querySelector('.picture-opening');//секция открытой карточки  
@@ -40,7 +46,6 @@ const pictureOpening = document.querySelector('.picture-opening');//секция
 const formEditButton = document.querySelector(".form_edit-button"); //формы
 const formAddButton = document.querySelector(".form_add-button");
 
-const formTitle = document.querySelector(".profile-form__title");  //заголовок формы
 const editButton = document.querySelector(".profile__edit-button"); //создать форму  
 const addButton = document.querySelector(".profile__add-button"); //создать форму
 
@@ -90,34 +95,10 @@ function handleClickClose(evt){
 };
 
 function createElement(elementTitle, elementImg) {//чтобы создать карточку нам нужны её title и её image link
+  const card = new Card(elementTitle, elementImg,'#card', pictureOpening, togglePopup);
   // отображаем на странице
-  addElement(initializationElement(elementTitle, elementImg));
+  addElement(card.initializationElement());
 };
-
-function initializationElement(elementTitle, elementImg){
-  const elementCopy = cardTemplate.cloneNode(true); // клонируем содержимое тега template
-  const elementImage = elementCopy.querySelector('.element__image');
-
-  elementCopy.querySelector('.element__title').textContent = elementTitle;  // добавление имени
-  elementImage.setAttribute('src', elementImg);  // добавление картинки
-
-  elementImage.addEventListener('click', function () {// открытие картинки
-    pictureOpening.querySelector('.picture-opening__title').textContent = elementTitle; // имя картинки
-    pictureOpening.querySelector('.picture-opening__img').setAttribute('src', elementImg);  //вставляем картинку
-
-    togglePopup(pictureOpening);
-  });
-
-  elementCopy.querySelector('.element__btn-like').addEventListener('click', function (evt) { /*inst: vanishhhhhhhhh проверьте, пожалуйста, работают ли там лайки тоже*/
-    evt.target.classList.toggle('element__btn-like_active');
-  });
-
-  elementCopy.querySelector('.element__btn-delete').addEventListener('click', function (evt) {// удаление карточки 
-    evt.target.closest(".element").remove();//обращаемся к ближайщему родителю ".element" и удаляем его
-  });
-
-  return elementCopy;
-}
 
 function addElement(elementCopy){ // в качестве аргумента передаём то, что хотим добавить в конец ".elements"
   elements.append(elementCopy);
@@ -132,6 +113,8 @@ btnClose.addEventListener('click', function () {  //закрытие карти�
 //edit
 
 function openingEditForm(evt){
+  validationForm(formEditButton);
+
   togglePopup(formEditButton);
 
   inputName.value = userName.textContent; //в форме будет показывать то значение, которые было в профиле
@@ -153,6 +136,8 @@ function saveEditForm(event){
 //add
 
 function openingAddForm(){
+  validationForm(formAddButton);
+  
   togglePopup(formAddButton);
 }
 
@@ -162,12 +147,18 @@ function resetAddForm(){
 
 function saveAddForm(event){
   event.preventDefault(); //Эта строчка отменяет стандартную отправку формы.
-  createElement(inputTitle.value, inputLink.value); //создаём картинку
+
+  createElement(inputTitle.value, inputLink.value);
 
   togglePopup(formAddButton);
 
   inputTitle.value = ""; //обнуляем ввёденное значение
   inputLink.value = "";
+}
+
+function validationForm(formElement) {
+  const b = new FormValidator(tuningValidation, formElement);
+  b.enableValidation();
 }
 
             /*кнопки*/
@@ -180,23 +171,11 @@ addButton.addEventListener('click', openingAddForm);  //add
 formAddButton.addEventListener('reset', resetAddForm);
 formAddButton.addEventListener('submit', saveAddForm);
 
-//formEditButton.addEventListener('keydown', exitEscEditPopap);
 
                 /*код*/
 
 for (let i = 0; i < initialCards.length; i++){//создаём 6 карточек 
   createElement(initialCards[i].name, initialCards[i].link);
 }
-
-//enableValidation();
-
-
-
-
-
-
-
-
-
 
 
