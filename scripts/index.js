@@ -60,7 +60,6 @@ const userInfo = document.querySelector(".profile__user-info");
 
 const btnClose = pictureOpening.querySelector('.profile-form__btn-close');
 
-const buttonSaveList = Array.from(document.querySelectorAll(".profile-form__btn-save"));
 
 let openPopup;
 
@@ -88,10 +87,9 @@ function handleEscClose(evt) {//если нажат Esc, применяем togg
 }
 
 function handleClickClose(evt){
-  if(evt.target.classList.value.startsWith('form') || (evt.target.classList.value.startsWith('picture-opening') && !evt.target.classList.value.startsWith('picture-opening_'))){
+  if(evt.target.classList.value.indexOf('popup') > -1){
     togglePopup(openPopup);
   }
-
 };
 
 function createElement(elementTitle, elementImg) {//чтобы создать карточку нам нужны её title и её image link
@@ -101,7 +99,7 @@ function createElement(elementTitle, elementImg) {//чтобы создать к
 };
 
 function addElement(elementCopy){ // в качестве аргумента передаём то, что хотим добавить в конец ".elements"
-  elements.append(elementCopy);
+  elements.prepend(elementCopy);
 }
 
 btnClose.addEventListener('click', function () {  //закрытие картинки
@@ -174,8 +172,10 @@ formAddButton.addEventListener('submit', saveAddForm);
 
                 /*код*/
 
-for (let i = 0; i < initialCards.length; i++){//создаём 6 карточек 
-  createElement(initialCards[i].name, initialCards[i].link);
-}
+initialCards.forEach(function(item) {
+  createElement(item.name, item.link);
+});
+
+
 
 
