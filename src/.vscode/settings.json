@@ -1,0 +1,5 @@
+{
+  "files.maxMemoryForLargeFilesMB": 8000,
+  "workbench.sash.size": 20,
+  "workbench.tree.indent": 24
+}
