@@ -1,0 +1,7 @@
+@import url(./_opened/popup_opened.css);
+
+.popup {
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden; 
+}
