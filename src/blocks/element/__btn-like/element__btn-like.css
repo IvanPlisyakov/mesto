@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   object-fit: cover;
   outline: none;
+  cursor: pointer;
 }
 
 .element__btn-like:hover {/*захотелось*/

@@ -3,19 +3,17 @@ export class PopupWithForm extends Popup {
   constructor(formSubmit, popupSelector) {
     super(popupSelector);
     this._formSubmit = formSubmit;
-    this.formData = {}
+    
     this._inputList = this._popup.querySelectorAll('.profile-form__user');
     this._buttonSubmit = this._popup.querySelector('.profile-form__btn-save');
-
-    this._form_user = this._popup.querySelector('.profile-form__user_data_name');
-    this._form_info = this._popup.querySelector('.profile-form__user_data_info');
   }
 
   _getInputValues() {//собирает данные всех полей формы
-    this.formData = {
-      0: this._inputList[0].value,
-      1: this._inputList[1].value,
-    }
+    this.formData = {}
+
+    this._inputList.forEach((item) => {
+      this.formData[item.id] = item.value;
+    })
   }
   
   setEventListeners() {
@@ -31,9 +29,14 @@ export class PopupWithForm extends Popup {
 
   open({name = "", info = ""}) {
     super.open();
+    
+    const arrayValues = Object.values({name, info})
 
-    this._form_user.value = name;
-    this._form_info.value = info;
+    let i = 0;
+    this._inputList.forEach((item) => {
+      item.value = arrayValues[i];
+      i++;
+    })
   }
 
   close() {

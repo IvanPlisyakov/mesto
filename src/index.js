@@ -21,33 +21,33 @@ import {
 
 
 
-const PopupImage = new PopupWithImage(".picture-opening")
-
+const popupImage = new PopupWithImage(".picture-opening")
+popupImage.setEventListeners();
 function handleCardClick(title, img) {
-  PopupImage.open({name: title, link: img})
-  PopupImage.setEventListeners();
+  popupImage.open({name: title, link: img})
 }
 
 function createNewCard(item) {
-  return new Card(item,'#card', handleCardClick);
+  const card = new Card(item,'#card', handleCardClick);
+  return card.initializationElement()
 }
 
-const ElementsList = new Section({items: initialCards, renderer: createNewCard}, '.elements');
-ElementsList.initializationItems();
+const elementsList = new Section({items: initialCards, renderer: createNewCard}, '.elements');
+elementsList.renderItems();
 
 
 
-const User = new UserInfo({name: ".profile__user-name", info: ".profile__user-info"});
+const user = new UserInfo({name: ".profile__user-name", info: ".profile__user-info"});
 
-const EditForm = new PopupWithForm(() => {
-  User.setUserInfo(EditForm.formData)
+const editForm = new PopupWithForm(() => {
+  user.setUserInfo(EditForm.formData)
 }, ".form_edit-button")
-EditForm.setEventListeners();
+editForm.setEventListeners();
 const validatorEditForm = new FormValidator(tuningValidation, formEditButton);
 validatorEditForm.enableValidation();
 
 editButton.addEventListener('click', () => {
-  EditForm.open( User.getUserInfo() )
+  editForm.open( user.getUserInfo() )
 
   validatorEditForm.inputList.forEach((inputElement) => {//снимаем предыдушие error
     validatorEditForm.hideInputError(inputElement);
@@ -58,24 +58,33 @@ editButton.addEventListener('click', () => {
 
 
 
-const AddForm = new PopupWithForm(() => {
-  const item = [{
-    name: AddForm.formData[0],
-    link: AddForm.formData[1],
-  }]
-  const ElementList = new Section({items: item, renderer: createNewCard}, '.elements');
-  ElementList.initializationItems();
+const addForm = new PopupWithForm(() => {
+
+  const {
+    'title-input': name, 
+    'link-input': link
+  } = addForm.formData;
+  
+ // createNewCard({name, link});
+
+  //const elementList = new Section({items: item, renderer: createNewCard}, '.elements');
+  elementsList.addItem(createNewCard({name, link}));
 }, ".form_add-button");
-AddForm.setEventListeners();
+addForm.setEventListeners();
 const validatorAddForm = new FormValidator(tuningValidation, formAddButton);
 validatorAddForm.enableValidation();
 
 addButton.addEventListener('click', () => {
-  AddForm.open( {} );
+  addForm.open( {} );
   validatorAddForm.inputList.forEach((inputElement) => {
     validatorAddForm.hideInputError(inputElement);
   });
+
+  validatorAddForm.buttonElement.classList.add(validatorAddForm.tuningValidation['buttonInctive']);
+  validatorAddForm.buttonElement.setAttribute('disabled', true);
 });
+
+
 
 
 

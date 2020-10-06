@@ -7,6 +7,7 @@
   background-color: black;
   border: 2px solid #FFFFFF;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .profile__add-button:hover {
