@@ -38,7 +38,7 @@ export class Card {
 
   _removeImageClick() {
     this._element.remove();
-    this._elementCopy = '';
+    this._elementCopy = null;
   }
   
   initializationElement() {

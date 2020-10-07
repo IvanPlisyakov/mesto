@@ -32,8 +32,8 @@ export class PopupWithForm extends Popup {
     
     const arrayValues = Object.values({name, info})
 
-    let i = 0;
-    this._inputList.forEach((item) => {
+
+    this._inputList.forEach((item, i) => {
       item.value = arrayValues[i];
       i++;
     })

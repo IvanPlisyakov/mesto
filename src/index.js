@@ -40,7 +40,7 @@ elementsList.renderItems();
 const user = new UserInfo({name: ".profile__user-name", info: ".profile__user-info"});
 
 const editForm = new PopupWithForm(() => {
-  user.setUserInfo(EditForm.formData)
+  user.setUserInfo(editForm.formData)
 }, ".form_edit-button")
 editForm.setEventListeners();
 const validatorEditForm = new FormValidator(tuningValidation, formEditButton);
