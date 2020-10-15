@@ -1,4 +1,3 @@
-//import lilkristalllImage from 'images/element-lil_krystalll.png';
 import lilkristalllImage from '../images/element-lil_krystalll.png';
 import opgImage from '../images/element-opg.jpg';
 import opiatesImage from '../images/element-opiates.jpg';
@@ -46,6 +45,12 @@ export const tuningValidation = {
 
 export const formEditButton = document.querySelector(".form_edit-button"); //формы
 export const formAddButton = document.querySelector(".form_add-button");
+export const formNewAvatar = document.querySelector('.form_new-avatar');
 
 export const editButton = document.querySelector(".profile__edit-button"); //профиль 
 export const addButton = document.querySelector(".profile__add-button"); 
+export const newAvatarButton = document.querySelector('.profile__avatar-button')
+
+export const userName = document.querySelector(".profile__user-name"); 
+export const userInfo = document.querySelector(".profile__user-info"); 
+export const avatarImage = document.querySelector(".profile__avatar"); 

@@ -1,10 +1,13 @@
 @import url(./__btn-delete/element__btn-delete.css);
+@import url(./__btn-delete/_inactive/element__btn-delete_inactive.css);
 @import url(./__btn-like/element__btn-like.css);
 @import url(./__btn-like/_active/element__btn-like_active.css);
 @import url(./__column/element__column.css);
+@import url(./__column-like/element__column-like.css);
 @import url(./__image/element__image.css);
 @import url(./__img-cap/element__img-cap.css);
 @import url(./__img-urn/element__img-urn.css);
+@import url(./__number-like/element__number-like.css);
 @import url(./__overlay/element__overlay.css);
 @import url(./__title/element__title.css);
 

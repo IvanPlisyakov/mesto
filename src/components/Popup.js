@@ -31,6 +31,7 @@ export class Popup {
 
   setEventListeners() {
     this._popup.querySelector(".profile-form__btn-close").addEventListener('click', this.close.bind(this));
+    
   }
 
 }

@@ -15,15 +15,29 @@
     </header>
     <main class="main">
       <section class="profile">
-        <img class="profile__avatar" src="images/profile__avatar.png" alt="Аватар вашей страницы">
+        <div class="profile__overlay">
+          <img class="profile__avatar" src="images/profile__avatar.png" alt="Аватар вашей страницы">
+          <button class="profile__avatar-button" type="button"></button>
+        </div>
         <div class="profile__column">
           <div class="profile__info">
-            <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+            <h1 class="profile__user-name"></h1>
             <button class="profile__edit-button" type="button"></button>
-            <p class="profile__user-info">Исследователь океана</p>
+            <p class="profile__user-info"></p>
           </div>
         <button class="profile__add-button" type="button"></button>
         </div>
+      </section>
+      <section class="popup form form_new-avatar">
+        <form class="profile-form" name="avatar-сhange" novalidate>
+          <h2 class="profile-form__title">Обновить аватар</h2>
+          <label class="profile-form__field">
+            <input class="profile-form__user profile-form__user_data_info" id="avatar-input" type="url" name="adding-a-picture" placeholder="Ссылка на аватар" required>
+            <span class="profile-form__user-error" id="avatar-input-error"></span>
+          </label>
+          <button class="profile-form__btn-save" type="submit">Сохранить</button>
+          <button class="profile-form__btn-close" type="reset"></button>
+        </form>
       </section>
       <section class="popup form form_edit-button">
         <form class="profile-form" name="profile-сhange" novalidate>
@@ -55,16 +69,28 @@
           <button class="profile-form__btn-close" type="reset"></button>
         </form>
       </section>
+      <section class="popup form form_delete-popup">
+        <form class="profile-form" novalidate>
+          <h2 class="profile-form__title profile-form__title_delete-popup">Вы уверены?</h2>
+          <button class="profile-form__btn-save" type="submit">Да</button>
+          <button class="profile-form__btn-close" type="reset"></button>
+        </form>
+      </section>
       <template id="card">
         <div class="element">
-          <div class="element__overlay"><img class="element__image" src="images/element-rnb_club.jpg" alt=""></div>
-          <button class="element__btn-delete" type="button">
+          <div class="element__overlay">
+            <img class="element__image" src="images/element-rnb_club.jpg" alt="">
+          </div>
+          <button class="element__btn-delete element__btn-delete_inactive" type="button">
             <img class="element__img-cap" src="images/element__img-cap.svg" alt="">
             <img class="element__img-urn" src="images/element__img-urn.svg" alt="">
           </button>
           <div class="element__column">
             <h4 class="element__title"></h4>
-            <button class="element__btn-like" type="button"></button>
+            <div class="element__column-like">
+              <button class="element__btn-like" type="button"></button>
+              <p class="element__number-like">15252</p>
+            </div>
           </div>
         </div>
       </template>

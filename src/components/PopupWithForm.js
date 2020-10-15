@@ -35,7 +35,6 @@ export class PopupWithForm extends Popup {
 
     this._inputList.forEach((item, i) => {
       item.value = arrayValues[i];
-      i++;
     })
   }
 
