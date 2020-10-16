@@ -5,7 +5,7 @@ import rnbclubImage from '../images/element-rnb_club.jpg';
 import sweetdreamsImage from '../images/element-sweet_dreams.jpg';
 import nolabelImage from '../images/element-no_label.jpg';
 
-export const initialCards = [
+/*export const initialCards = [
   {
       name: 'LIL KRYSTALLL',
       link: lilkristalllImage
@@ -30,7 +30,7 @@ export const initialCards = [
       name: 'NO LABEL',
       link: nolabelImage
   }
-];
+];*/
 
 export const tuningValidation = {
   form: '.profile-form',
@@ -54,3 +54,7 @@ export const newAvatarButton = document.querySelector('.profile__avatar-button')
 export const userName = document.querySelector(".profile__user-name"); 
 export const userInfo = document.querySelector(".profile__user-info"); 
 export const avatarImage = document.querySelector(".profile__avatar"); 
+
+export const keyCodeEsc = 27;
+
+export const userId = 'd031d4975e470bf308783176';

@@ -8,7 +8,7 @@ import {PopupWithImage} from './components/PopupWithImage.js';
 import {PopupWithForm} from './components/PopupWithForm.js';
 import {UserInfo} from './components/UserInfo.js';
 import {
-  initialCards,
+  userId,
   tuningValidation,
   formEditButton,
   formAddButton,
@@ -23,25 +23,27 @@ import {
 
 let elementsList;
 
-const api = new Api((data) => {
-  elementsList = new Section({items: data, renderer: createNewCard}, '.elements');
-  elementsList.renderItems();
-}, {
+const api = new Api( {
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-16',
   headers: {
     authorization: '12ba02f1-21d1-4be5-b67c-2a240b5b5b87',
     'Content-Type': 'application/json'
   }
-}, {
-  userName: userName,
-  userInfo: userInfo,
-  avatarImage: avatarImage,
-}, (elementsList, obj) => {
-  elementsList.addItem(createNewCard(obj));
-}, 'd031d4975e470bf308783176'); 
+}); 
 
-api.getInitialProfile()
-api.getInitialCards()
+const initialProfile = api.getInitialProfile()
+initialProfile.then((data) => {
+  userName.textContent = data.name;
+  userInfo.textContent = data.about;
+  avatarImage.src = data.avatar;
+})
+
+const initialCards = api.getInitialCards()
+initialCards.then((data) => {
+  elementsList = new Section({items: data.reverse(), renderer: createNewCard}, '.elements');
+  elementsList.renderItems();
+})
+
 
 
 
@@ -102,7 +104,15 @@ const addForm = new PopupWithForm(() => {
     'title-input': name,
     'link-input': link
   } = addForm.formData;
-  api.addCard(elementsList, name, link)
+  const newCard = api.addCard( name, link)
+  newCard.then((data) => {
+    for(let i = 0; i <= data.length; i++) {//находим карточку которую загрузили, чтобы взять её id
+      if(data[i].name == name && data[i].link == link && data[i].owner._id == userId) {
+        elementsList.addItem(createNewCard(data[i]))
+        break
+      }
+    }
+  })
   //elementsList.addItem(createNewCard({name, link, likes: [], owner: {_id: 'd031d4975e470bf308783176'}}));
   //elementsList.addItem(createNewCard({name, link, likes: [], _id: ar.id , owner: {_id: ar.ownerId}}));
 
