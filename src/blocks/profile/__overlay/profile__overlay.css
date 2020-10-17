@@ -1,8 +1,8 @@
 .profile__overlay {border: 1px solid green;
   background-color: red;
   position: relative;
-  max-width: 120px;
-  max-height: 120px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   outline: none;
   cursor: pointer;

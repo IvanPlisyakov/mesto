@@ -4,21 +4,25 @@ export class Api {
     this._headers = data.headers;
   }
 
+  _sendStandartThen(res) {
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
+
+  _sendStandartCatch(err) {
+    console.log(err); 
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, {//карточки
       method: 'GET',
       headers: this._headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err); 
-      });
+      .then((res) => {return this._sendStandartThen(res);})
+      .catch((err) => {this._sendStandartCatch(err)});
   }
   
   getInitialProfile() {
@@ -26,16 +30,8 @@ export class Api {
       method: 'GET',
       headers: this._headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-  
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err); 
-      });
+      .then((res) => {return this._sendStandartThen(res);})
+      .catch((err) => {this._sendStandartCatch(err)});
   }
 
   changeProfile(nameInput, infoInput) {
@@ -48,16 +44,8 @@ export class Api {
         about: infoInput
       })
     }) 
-      .then((res) => {
-        if (res.ok) {
-          return getInitialCards();//res.json();
-       }
-
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      })
+      .then((res) => {return this._sendStandartThen(res);})
+      .catch((err) => {this._sendStandartCatch(err)})
       .finally(() => {
         this._renderLoading(false, '.form_edit-button')
       });
@@ -75,14 +63,12 @@ export class Api {
     })
       .then((res) => {
         if (res.ok) {
-          return this.getInitialCards();
-        }
+          return this.getInitialCards();//res.json();
+       }
 
         return Promise.reject(`Ошибка: ${res.status}`);
       })
-      .catch((err) => {
-        console.log(err); 
-      })
+      .catch((err) => {this._sendStandartCatch(err)})
       .finally(() => {
         this._renderLoading(false, '.form_add-button')
       });
@@ -104,9 +90,7 @@ export class Api {
       method: 'DELETE',
       headers: this._headers
     })
-      .catch((err) => {
-        console.log(err); 
-      })
+      .catch((err) => {this._sendStandartCatch(err)})
   }
 
   deleteItem(idItem) {
@@ -114,9 +98,7 @@ export class Api {
       method: 'DELETE',
       headers: this._headers
     })
-      .catch((err) => {
-        console.log(err); 
-      })
+      .catch((err) => {this._sendStandartCatch(err)})
   }
 
   changeAvatarProfile(link) {
@@ -128,9 +110,7 @@ export class Api {
         avatar: link
       })
     })
-      .catch((err) => {
-        console.log(err); 
-      })
+      .catch((err) => {this._sendStandartCatch(err)}) 
       .finally(() => {
         this._renderLoading(false, '.form_new-avatar')
       });
